@@ -1,0 +1,6 @@
+{
+  "name": "AI Image Generation Workspace",
+  "description": "An interactive AI image generation canvas and paint board workspace inspired by liblib.tv.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
