@@ -1,194 +1,105 @@
-# AI Image Generation Canvas
-
-AI Image Generation Canvas is a full-stack React + Express app for node-based image generation on an infinite canvas. The current build is powered by the Right Codes Draw API and is designed for workflows where you want to place references on a board, connect them to generation nodes, and iterate visually instead of working in a plain form UI.
-
-## Key Features
-
-- Infinite canvas with draggable image and generation nodes
-- Right Codes image generation with per-node prompt, model, and aspect-ratio settings
-- Reference image import by file picker, drag and drop, and clipboard paste
-- Connected reference binding from prompt text with the numbered `@` reference tags shown in the UI
-- Multi-reference support that combines selected references into a contact sheet for Right Codes
-- Built-in generation history gallery for sending older outputs back onto the canvas
-- Right Codes upscale flow for sharper follow-up outputs
-
-## Model Options
-
-The current canvas UI exposes the following Right Codes model options:
-
-| Model | Description | Resolution Support |
-| --- | --- | --- |
-| `gpt-image-2-vip` | OpenAI's latest image model through the official upstream route. | `1K`, `2K`, `4K` |
-| `gpt-image-2` | A lower-cost edition of OpenAI's latest image model. | `1K` |
-| `nano-banana` | A model wrapped from `gemini-2.5-flash-image`. | Not specified in this repo |
-| `nano-banana-2` | Second-generation Nano Banana model with stronger overall image quality than the previous generation. | `1K`, `2K`, `4K` |
-| `nano-banana-pro` | Higher-end second-generation Nano Banana model with stronger overall image quality than the previous generation. | `1K`, `2K`, `4K` |
-
-## Workflow
-
-1. Start the app and open the canvas in the browser.
-2. Import one or more reference images onto the board.
-3. Create or select a generation node.
-4. Connect references to that node and write the prompt.
-5. Optionally target specific references in the prompt with the UI's numbered `@` reference tags.
-6. Generate with Right Codes and continue arranging results on the canvas.
-7. Upscale selected outputs when you want a cleaner final image.
-
-## Tech Stack
-
+Local-ai-image是一个基于 React 和 Express 的全栈应用，用于在无限画布上进行基于节点的图像生成。当前版本由 Right Codes Draw API 提供支持，专为希望在画布上放置参考资料、将其连接到生成节点并进行可视化迭代的工作流程而设计，而非使用纯文本 UI。
+主要特点
+- 带有可拖动图像和生成节点的无限画布
+- Right Codes 图像生成，支持每个节点的提示符、模型和宽高比设置
+- 参考图像可通过文件选择器、拖放和剪贴板粘贴导入
+- 将提示文本中的引用绑定到@用户界面中显示的编号引用标签。
+- Right Codes 的多参考支持功能，可将选定的参考资料合并到联系表中。
+- 内置生成历史记录库，可将旧输出发送回画布。
+- Right Codes 提升流程，以获得更清晰的后续输出
+车型选项
+当前画布用户界面公开了以下 Right Codes 模型选项：
+暂时无法在飞书文档外展示此内容
+工作流程
+1. 启动应用程序，并在浏览器中打开画布。
+2. 将一张或多张参考图像导入到绘图板上。
+3. 创建或选择一个生成节点。
+4. 连接指向该节点的引用并写入提示。
+5. （可选）使用用户界面中的编号@引用标签来定位提示中的特定引用。
+6. 使用正确的代码生成结果，并继续在画布上排列结果。
+7. 当您需要更清晰的最终图像时，请对选定的输出进行放大。
+技术栈
 - React 19
 - TypeScript
-- Vite
-- Express
-- Right Codes Draw API
+- 维特
+- 表达
+- 正确的代码绘制 API
 - Tailwind CSS v4
-- Motion
-- esbuild for the production server bundle
+- 运动
+- 生产服务器捆绑包的 esbuild
+入门
+先决条件
+- 推荐使用 Node.js 20+
+- Right Codes Draw 的 API 密钥
+Codex / Cursor 运行
+在codex中新建一个文件夹
+[图片]
+在对话框中输入：https://github.com/kacey221/Local-ai-image.git 这个网址，下载并运行这个程序
+接下来就让codex自行运行，中途遇到问题，codex会有提示，只需要按照它的建议做就行，直到运行成功。
+电脑本地运行
+请按照以下步骤操作：
+1. 检查电脑上是否安装得有node.js 20+的版本。
+①.打开终端：系统键+R,在弹出来的对话框中输入powershell点回车。
+②.默认的情况下输入：node -v 或 node --version
+输出 v20.15.0 / v22.4.1 → 已安装 20+ 版本
+输出 v18.20.3 / v16.20.2 → 版本低于 20，不符合（建议更新）
+提示 'node' 不是内部或外部命令 → 未安装或未配置环境变量
+③.安装node.js（有node的，这一步就忽略，没有的就按照这个步骤进行安装）
+Node:  下载地址：https://nodejs.org/en/download
+[图片]
+ps：node是基础的一个语言环境，后面很多东西依赖他，
+验证：终端输入：node -v
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 20+ recommended
-- An API key for Right Codes Draw
-
-### Run Locally on Your Machine
-
-If you want to start the project on your own computer from scratch, follow these steps:
-
-1. Clone the repository:
-
-```bash
-git clone <your-repository-url>
-cd ai-image-generation-workspace
-```
-
-2. Install dependencies:
-
-```bash
+2. 进入项目文件夹：
+终端输入：cd https://github.com/kacey221/Local-ai-image.git  或 cd E:\kacey\codex\Local-ai-image-main （保存文件夹的地址） 点击回车
+3. 安装依赖项：
 npm install
-```
-
-3. Copy the example environment file:
-
-```bash
+3. 复制示例环境文件：
 cp .env.example .env
-```
-
-If you are using PowerShell on Windows, you can also run:
-
-```powershell
+如果您在 Windows 系统上使用 PowerShell，也可以运行以下命令：
 Copy-Item .env.example .env
-```
-
-4. Open `.env` and set your Right Codes key:
-
-```env
+4. 打开.env并设置您的正确代码密钥：
 RIGHTCODES_API_KEY=your_api_key_here
-```
-
-5. Start the local development server:
-
-```bash
+https://www.right.codes   (开始可以充1元试试，1元都可以生好多张图了 ) / 邀请码：02770667
+5. 启动本地开发服务器：
 npm run dev
-```
+6. 打开浏览器并访问http://localhost:3000。
+7. 确认应用正在运行：
+- 终端应该打印类似如下的一行：Server running on http://0.0.0.0:3000
+- 访问http://localhost:3000/api/config-status应该返回 JSON
+- 画布用户界面应该在浏览器中加载。
+开发服务器在单个端口上同时运行 Express 后端和 Vite 前端。
 
-6. Open your browser and visit [http://localhost:3000](http://localhost:3000).
-
-7. Confirm the app is running:
-
-- The terminal should print a line similar to `Server running on http://0.0.0.0:3000`
-- Visiting [http://localhost:3000/api/config-status](http://localhost:3000/api/config-status) should return JSON
-- The canvas UI should load in the browser
-
-The development server runs the Express backend and Vite frontend together on a single port.
-
-### Use This Project on Another Computer
-
-To use the project on a second machine, follow the same local setup steps above on that machine.
-
-The additional requirements are:
-
-- Node.js 20+ must be installed on that computer
-- `RIGHTCODES_API_KEY` must be available in that computer's `.env`
-- The machine must be able to reach the public Right Codes API over the internet
-- Port `3000` must be free, because the current server is hard-coded to that port
-
-If you only want to access the app from another device on the same LAN, start the project on the host machine and open:
-
-- `http://localhost:3000` on the host machine
-- `http://<host-local-ip>:3000` from another device on the same network
-
-You may also need to allow port `3000` through the host machine's firewall.
-
-## Environment Variables
-
-The current build only requires `RIGHTCODES_API_KEY`.
-
-| Variable | Required | Notes |
-| --- | --- | --- |
-| `RIGHTCODES_API_KEY` | Yes | Used by the active image generation and upscale routes |
-| `APP_URL` | No | Deployment-oriented placeholder; not required for local development |
-
-## Available Scripts
-
-```bash
+环境变量
+当前版本仅需要RIGHTCODES_API_KEY。
+暂时无法在飞书文档外展示此内容
+可用脚本
 npm run dev
-```
-
-Starts the local full-stack development server at `http://localhost:3000`.
-
-```bash
+启动本地全栈开发服务器http://localhost:3000。
 npm run build
-```
-
-Builds the frontend with Vite and bundles the server to `dist/server.cjs`.
-
-```bash
+使用 Vite 构建前端并将服务器打包到dist/server.cjs.
 npm run start
-```
-
-Runs the production bundle from `dist/`.
-
-```bash
+从此处运行生产包dist/。
 npm run lint
-```
-
-Runs a TypeScript type check with `tsc --noEmit`.
-
-```bash
+使用 . 运行 TypeScript 类型检查tsc --noEmit。
 npm test
-```
-
-Runs the repository's `.test.ts` files through the Node test runner with `tsx`, which is required for this TypeScript + ESM setup.
-
-## API Overview
-
-### Active Routes
-
-- `GET /api/config-status`
-- `POST /api/rightcodes/generate-image`
-- `POST /api/rightcodes/upscale-image`
-
-### Compatibility Routes
-
-- `POST /api/gemini/generate-image`
-
-This route is currently an alias to the Right Codes generation handler so older frontend calls still work.
-
-### Legacy Placeholder or Disabled Routes
-
-- `POST /api/gemini/enhance-prompt`
-- `POST /api/gemini/edit-image`
-- `POST /api/gemini/upscale-image`
-- `POST /api/gemini/outpaint-image`
-- `POST /api/gemini/cutout-image`
-
-`/api/gemini/enhance-prompt` currently returns the original prompt unchanged. The image edit, outpaint, cutout, and Gemini upscale routes are kept only for compatibility and return `410 Gone` in this build.
-
-## Project Structure
-
-```text
+.test.ts使用 Node 测试运行器运行存储库的文件tsx，这是此 TypeScript + ESM 设置所必需的。
+API概述
+活动路由
+- GET /api/config-status
+- POST /api/rightcodes/generate-image
+- POST /api/rightcodes/upscale-image
+兼容性路由
+- POST /api/gemini/generate-image
+此路由目前是 Right Codes 生成处理程序的别名，因此旧的前端调用仍然有效。
+旧版占位符或已禁用路由
+- POST /api/gemini/enhance-prompt
+- POST /api/gemini/edit-image
+- POST /api/gemini/upscale-image
+- POST /api/gemini/outpaint-image
+- POST /api/gemini/cutout-image
+/api/gemini/enhance-prompt目前直接返回原始提示信息，未做任何更改。图像编辑、抠图、裁剪和 Gemini 放大等功能仅保留410 Gone在此版本中以保持兼容性和功能正常。
+项目结构
 .
 |- src/                     # React app and canvas UI
 |- server/                  # Right Codes request helpers and tests
@@ -197,21 +108,15 @@ This route is currently an alias to the Right Codes generation handler so older 
 |- .env.example             # Example environment variables
 |- package.json             # Scripts and dependencies
 `- dist/                    # Production build output
-```
-
-## Notes and Limitations
-
-- This repository currently runs as a Right Codes-only build.
-- Multi-reference generation is flattened into a single contact sheet image before being sent upstream.
-- Prompt enhancement is a passthrough placeholder in the current server.
-- Several route names still use `gemini` for backward compatibility even though generation is handled by Right Codes.
-- The app does not include persistence, authentication, or collaborative multi-user editing.
-
-## Why This README Exists
-
-The repository started from a generic template, so this README focuses on the behavior that actually exists in the current codebase. If you continue evolving the product, the most important sections to keep updated are:
-
-- environment variables
-- active API routes
-- supported generation workflows
-- feature limitations
+注释和限制
+- 该仓库目前仅以 Right Codes 构建方式运行。
+- 多参考图像生成后，会被合并成一张单独的联系表图像，然后再发送到上游服务器。
+- 提示增强是当前服务器中的一个直通占位符。
+- gemini即使路由生成由 Right Codes 处理，但仍有一些路由名称为了向后兼容而使用。
+- 该应用不包含持久化、身份验证或多人协作编辑功能。
+这份自述文件存在的意义
+该代码库基于通用模板创建，因此本 README 文件主要关注当前代码库中实际存在的行为。如果您持续开发该产品，则需要更新的最重要部分包括：
+- 环境变量
+- 活跃的 API 路由
+- 支持的生成工作流程
+- 功能限制
