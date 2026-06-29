@@ -42,6 +42,7 @@ app.get('/api/config-status', (req, res) => {
     hasKey: hasRightCodesKey,
     hasRightCodesKey,
     appName: 'AI Image Generation Canvas',
+    workspaceRoot: process.cwd(),
   });
 });
 
@@ -54,6 +55,7 @@ async function handleRightCodesGenerateImage(
       prompt,
       negativePrompt,
       aspectRatio,
+      detailLevel,
       batchCount,
       referenceImage,
       referenceBindingNote,
@@ -75,6 +77,7 @@ async function handleRightCodesGenerateImage(
         prompt,
         negativePrompt,
         aspectRatio,
+        detailLevel,
         referenceImage,
         referenceBindingNote,
       });
@@ -109,6 +112,7 @@ app.post('/api/rightcodes/upscale-image', async (req, res) => {
       originalPrompt,
       negativePrompt,
       aspectRatio,
+      detailLevel,
       model,
     } = req.body;
 
@@ -123,6 +127,7 @@ app.post('/api/rightcodes/upscale-image', async (req, res) => {
       originalPrompt,
       negativePrompt,
       aspectRatio,
+      detailLevel,
       model,
     });
 
